@@ -1,3 +1,4 @@
 datasets/
 digit_model.sav
 letter_model.sav
+.DS_Store
