@@ -10,6 +10,7 @@ import numpy as np
 import pickle
 from sklearn import preprocessing
 from sklearn import svm
+from sklearn.ensemble import RandomForestClassifier
 from mnist import MNIST
 import gzip
 import shutil
@@ -31,40 +32,30 @@ with gzip.open('datasets/digits/train-labels-idx1-ubyte.gz', 'rb') as f_in:
 print("Datasets loaded!\n")
 
 mndata = MNIST('datasets/letters')
-x,y = mndata.load_training()
+x, y = mndata.load_training()
 x = np.array(x)
 y = np.array(y)
-x = preprocessing.scale(x)
-x_train = x[:10000]
-x_test = x[60000:]
-y_train = y[:10000]
-y_test = y[60000:]
-y_train = y_train.astype(np.int8)
-y_test = y_test.astype(np.int8)
+x_train = x
+y_train = y
 
-model = svm.SVC(gamma=0.001 , C = 100.)
+model = RandomForestClassifier(n_estimators=100)
 print("Fitting model for Alphabets...")
-model.fit(x_train,y_train)
+model.fit(x_train, y_train)
 
 filename = 'letter_model.sav'
 pickle.dump(model, open(filename, 'wb'))
 print("Done!\n")
 
 mndata = MNIST('datasets/digits')
-x,y = mndata.load_training()
+x, y = mndata.load_training()
 x = np.array(x)
 y = np.array(y)
-x = preprocessing.scale(x)
-x_train = x[:10000]
-x_test = x[60000:]
-y_train = y[:10000]
-y_test = y[60000:]
-y_train = y_train.astype(np.int8)
-y_test = y_test.astype(np.int8)
+x_train = x
+y_train = y
 
-model = svm.SVC(gamma=0.001 , C = 100.)
+model = RandomForestClassifier(n_estimators=100)
 print("Fitting model for Digits...")
-model.fit(x_train,y_train)
+model.fit(x_train, y_train)
 
 filename = 'digit_model.sav'
 pickle.dump(model, open(filename, 'wb'))

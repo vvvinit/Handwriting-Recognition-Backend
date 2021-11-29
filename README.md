@@ -9,5 +9,5 @@ ___
 ### [IIT2019234 - Pravallika Kodi](https://github.com/iit2019234)
 ___
 ## Topic
-Project focuses using Convolutional Neural Network to recognize and convert handwritten text in an image into digital format.
+Project focuses using Support Vector Machine Algorithm to recognize and convert handwritten text in an image into digital format.
 ___
